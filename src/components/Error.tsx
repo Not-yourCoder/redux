@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import { CustomError } from "../types/app.type";
+import { CustomError } from "../types/counter.type";
 
 export default function ErrorPage() {
     const error = useRouteError() as CustomError;

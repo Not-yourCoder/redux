@@ -1,56 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { createStore } from 'redux'
-import { CounterAction, CounterActionTypes, CounterState } from '../types/app.type'
+import "../styles/todo.css"
 
 
-//store
-const initialState: CounterState = { value: 0 }
-
-
-//actions
-const increment = (): CounterAction => ({
-    type: CounterActionTypes.INCREMENT
-})
-
-const decrement = () => ({
-    type: CounterActionTypes.DECREMENT
-})
-
-//reducer
-function counterReducer(state = initialState, action: CounterAction) {
-    if (action.type === "increment") {
-        return { ...state, value: state.value + 1 }
-    }
-    if (action.type === "decrement") {
-        return { ...state, value: state.value - 1 }
-    }
-}
-export const store = createStore(counterReducer, initialState)
-
-const Counter = () => {
-
-    const dispatch = useDispatch()
-    const count = useSelector((state: CounterState) => state?.value)
-
-    const handleIncrement = () => {
-        dispatch(increment())
-    }
-
-    const handleDecrement = () => {
-        dispatch(decrement())
-    }
-
-
+function Todo() {
     return (
-        <>
-            <div>
-                <h1>Counter</h1>
-                <p>Count: {count}</p>
-                <button onClick={handleIncrement}>Increment</button>
-                <button onClick={handleDecrement}>Decrement</button>
-            </div>
-        </>
+        <div className="Main">
+            <nav>
+                <section>
+                    <h1>Redux Fundamentals Example</h1>
+
+                    <div className="navContent">
+                        <div className="navLinks"></div>
+                    </div>
+                </section>
+            </nav>
+            <section>
+                <h2>Counter</h2>
+            </section>
+        </div>
     )
 }
 
-export default Counter
+export default Todo
