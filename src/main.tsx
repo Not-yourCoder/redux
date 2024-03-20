@@ -5,7 +5,7 @@ import Counter from './components/Counter'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './components/Home'
 import ErrorPage from './components/Error'
-import Main from './components/Todo'
+import Main from './components/Todo/Todo'
 import Test from './components/Test'
 
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([{
       element: <Test />
     }
   ]
-}, { path: "/counter", element: <Counter /> }, { path: "/main", element: <Main /> }])
+}, { path: "/counter", element: <Counter /> }, { path: "/todos", element: <Main /> }])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
