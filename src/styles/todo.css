@@ -582,3 +582,10 @@ form.colorSelection label {
 form.colorSelection input[type='checkbox'] {
     margin-right: 5px;
 }
+
+
+.hover-add{
+    background: rgb(118, 74, 188, 0.9);
+    color: white;
+    font-weight: 800;
+}

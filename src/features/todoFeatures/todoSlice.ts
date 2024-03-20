@@ -1,31 +1,30 @@
-const initialState = []
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { InitialState } from "../../types/todo.type";
 
-export default function todosReducer(state = initialState, action) {
-  switch (action.type) {
-    case "todos/todoAdded": {
-      // Can return just the new todos array - no extra object around it
-      return [
-        ...state,
-        {
-          id: nextTodoId(state),
-          text: action.payload,
-          completed: false,
-        },
-      ];
-    }
-    case "todos/todoToggled": {
-      return state.map((todo) => {
-        if (todo.id !== action.payload) {
-          return todo;
-        }
+const initialState: InitialState = {
+  todoItems: [],
+  error: null,
+};
+const todoSlice = createSlice({
+  name: "todo",
+  initialState,
+  reducers: {
+    addTodo: (state, action: PayloadAction<string>) => {
+      state.todoItems.push(action.payload);
+    },
+    deleteTodo: (state, action: PayloadAction<number>) => {
+      state.todoItems = state.todoItems.filter(
+        (_, index) => index !== action.payload
+      );
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+  },
+});
 
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-      });
-    }
-    default:
-      return state;
-  }
-}
+export const { addTodo, deleteTodo, setError, clearError } = todoSlice.actions;
+export default todoSlice.reducer;

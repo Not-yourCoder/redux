@@ -1,10 +1,11 @@
-export enum TodoActionTypes {
-  ADD = "todos/add",
-  TOGGLE = "todos/toggle",
+export interface TodoState {
+  todos: {
+    todoItems: string[];
+    error: string | null;
+  };
 }
 
-// Define action types for filters
-export enum FilterActionTypes {
-  STATUS_FILTER_CHANGED = "filters/statusFilterChanged",
-  COLOR_FILTER_CHANGED = "filters/colorFilterChanged",
+export interface InitialState {
+  todoItems: string[];
+  error: string | null;
 }
