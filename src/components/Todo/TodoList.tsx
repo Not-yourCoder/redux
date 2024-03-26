@@ -3,10 +3,11 @@ import { MdEdit } from "react-icons/md";
 import useFetchTodo from '../../hooks/useFetchData';
 import { useState } from "react";
 import TodoEdit from "./TodoEdit";
+import { TodoItem } from "../../types/todo.type";
 
 
 interface TodoListProps {
-    todoItems: string[];
+    todoItems: TodoItem;
     priority: string[];
     onDelete: (index: number) => void
 }
@@ -20,10 +21,10 @@ export const TodoList = ({ todoItems, priority, onDelete }: TodoListProps) => {
         High: 'red',
     };
 
-    const {loading, error } = useFetchTodo()
+    const { loading, error } = useFetchTodo()
 
 
-    const [priorities, setPriorities] = useState<string[]>(Array(todoItems.length).fill('low'));
+    const [priorities, setPriorities] = useState(Array(todoItems.length).fill('low'));
     const [editMode, setEditMode] = useState(false)
     const [todoDetails, setTodoDetails] = useState("")
 
@@ -33,7 +34,7 @@ export const TodoList = ({ todoItems, priority, onDelete }: TodoListProps) => {
         newPriorities[index] = value;
         setPriorities(newPriorities);
     };
-    const handleEditToggle = (details) => {
+    const handleEditToggle = (details: TodoItem) => {
         setEditMode(prev => !prev)
         setTodoDetails(details)
     }
@@ -42,7 +43,7 @@ export const TodoList = ({ todoItems, priority, onDelete }: TodoListProps) => {
 
     }
 
-    if (loading === "loading") {
+    if (loading) {
         return <div>Loading...</div>
     }
     if (error) {

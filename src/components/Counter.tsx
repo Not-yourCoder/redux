@@ -3,11 +3,12 @@ import { IoIosAdd } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset } from "../features/counterFeatures/counterSlice";
+import { CounterState } from "../types/counter.type";
 
 
 function Todo() {
     const dispatch = useDispatch()
-    const count = useSelector((state) => state.counter.value)
+    const count = useSelector((state: CounterState) => state.counter.value)
     const handleIncrement = () => {
         dispatch(increment())
     }

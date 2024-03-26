@@ -1,8 +1,9 @@
 /* eslint-disable no-useless-catch */
 import React, { useState } from 'react'
 import { updateTodoItem } from '../../helpers/todoManipulation';
+import { TodoItem } from '../../types/todo.type';
 
-type Props = { todoItems: string, setEditMode: (value: boolean) => void; onSave: (value: string[]) => void }
+type Props = { todoItems: TodoItem, setEditMode: (value: boolean) => void; onSave: (value: string) => void }
 
 const TodoEdit = (props: Props) => {
     const [inputValue, setInputValue] = useState(props.todoItems.title)

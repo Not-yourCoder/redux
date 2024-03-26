@@ -6,12 +6,11 @@ import {
 } from "../features/todoFeatures/todoSlice";
 
 interface FetchResult {
-  result: string[];
   loading: boolean;
   error: Error | null;
 }
 
-const useFetchTodo = (): Promise<FetchResult> => {
+const useFetchTodo = (): FetchResult => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 

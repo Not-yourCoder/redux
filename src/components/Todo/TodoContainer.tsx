@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTodoStart, fetchTodoFailure, fetchTodoSuccess, deleteTodo } from '../../features/todoFeatures/todoSlice'
+import { fetchTodoStart, fetchTodoFailure, deleteTodo } from '../../features/todoFeatures/todoSlice'
 import { TodoState } from '../../types/todo.type'
 import { VscAdd } from "react-icons/vsc";
 import { TodoList } from './TodoList';
@@ -21,7 +21,7 @@ const TodoContainer = () => {
         dispatch(fetchTodoStart())
     }, [dispatch])
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value)
 
     }

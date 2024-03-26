@@ -1,5 +1,7 @@
 export interface CounterState {
-  value: number;
+  counter: {
+    value: number;
+  };
 }
 
 export enum CounterActionTypes {
@@ -10,7 +12,6 @@ export enum CounterActionTypes {
 export type CounterAction =
   | { type: CounterActionTypes.INCREMENT }
   | { type: CounterActionTypes.DECREMENT };
-
 
 export interface CustomError extends Error {
   statusText?: string;
