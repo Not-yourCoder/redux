@@ -3,28 +3,38 @@ import { InitialState } from "../../types/todo.type";
 
 const initialState: InitialState = {
   todoItems: [],
+  loading: false,
   error: null,
 };
 const todoSlice = createSlice({
-  name: "todo",
+  name: "todos",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
-      state.todoItems.push(action.payload);
+    addTodo(state, action) {
+      state.loading = false;
+      state.todoItems = [...state.todoItems, action.payload];
+      return state
+    },
+    fetchTodoStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchTodoSuccess(state, action) {
+      state.loading = false;
+      state.todoItems = action.payload;
+    },
+    fetchTodoFailure(state, action) {
+      state.loading = false;
+      state.error = action.payload;
     },
     deleteTodo: (state, action: PayloadAction<number>) => {
       state.todoItems = state.todoItems.filter(
         (_, index) => index !== action.payload
       );
     },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
   },
 });
 
-export const { addTodo, deleteTodo, setError, clearError } = todoSlice.actions;
+export const { fetchTodoStart, fetchTodoFailure, fetchTodoSuccess, addTodo, deleteTodo} =
+  todoSlice.actions;
 export default todoSlice.reducer;

@@ -1,5 +1,5 @@
 import "../../styles/todo.css"
-import { TodoItem } from "./TodoItem"
+import TodoContainer from "./TodoContainer"
 
 
 function Todo() {
@@ -16,7 +16,7 @@ function Todo() {
       </nav>
       <section>
         <h2>Todo</h2>
-        <TodoItem />
+        <TodoContainer />
       </section>
     </div>
   )

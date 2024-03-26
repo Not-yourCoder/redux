@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    { "id": "1", "title": "Get Milk", "priority": "low" },
+    { "id": "2", "title": "Study React Redux", "priority": "high" },
+    { "id": "3", "title": "Set up AMD gpu driver", "priority": "medium" }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
